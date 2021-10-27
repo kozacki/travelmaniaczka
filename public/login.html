@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="pl">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Travelmaniaczka</title>
+    <script src="https://kit.fontawesome.com/22088e2c9e.js" crossorigin="anonymous"></script>
+
+    <link rel="stylesheet" href="css/login.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+    <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@400;700&display=swap" rel="stylesheet">
+</head>
+
+<body>
+
+    <button class="burger-btn">
+        <div class="burger-btn__box">
+            <div class="burger-btn__bars"></div>
+        </div>
+    </button>
+
+    <nav class="nav">
+        <div class="nav__items">
+            <!-- <a href="index.html" class="nav__item">Home</a> -->
+            <a href="aboutme.html" class="nav__item">O mnie</a>
+            <a href="index.html#ebook" class="nav__item">E-book</a>
+            <a href="index.html#offers" class="nav__item">Oferty</a>
+            <!-- <a href="#blog" class="nav__item">Blog</a> -->
+            <a href="index.html#contact" class="nav__item">Kontakt</a>
+        </div>
+    </nav>
+
+    <main class="main">
+        <div class="login">
+            <div class="login__box">
+                <a class="login__box-brand" href="index.html">Travelmaniaczka.pl</a>
+                <div class="login__box-loging">
+                    <a href="login.html" class="login__box-loging-link">Logowanie</a>
+                </div>
+                <a href="login.html" class="login__box-icon"><i class="fas fa-user"></i></a>
+            </div>
+        </div>
+        <div class="loging">
+            <div class="login-form">
+
+
+                <form action="/login" method="post" class="login-form__form">
+                    <h2 class="section-heading">Logowanie</h2>
+                    <label for="email" name="email" class="login-form__form-label">E-mail</label>
+                    <input type="text" class="login-form__form-input">
+
+                    <label for="password" class="login-form__form-label">Hasło</label>
+                    <input type="password" class="login-form__form-input">
+
+                    <a href="register.html" class="login-form__form-register">Zarejestruj się</a>
+                    <button class="login-form__form-submitBtn btn-special-animation">Zaloguj</button>
+                </form>
+            </div>
+        </div>
+
+
+
+        <footer class="footer">
+            <div class="footer__box">
+                <div class="footer__box-text"> &copy; <span class="footer__year"></span> Travelmaniaczka</div>
+            </div>
+
+        </footer>
+
+
+    </main>
+
+
+
+    <script src="js/loging.js"></script>
+
+
+</body>
+
+</html>

@@ -1,0 +1,1146 @@
+ @import './colors';
+ @import './components';
+ @import './mixins';
+
+ *,
+ *::before,
+ *::after {
+     box-sizing: border-box;
+     margin: 0;
+     padding: 0;
+ }
+
+ html {
+     font-size: 62.5%;
+     scroll-behavior: smooth;
+ }
+
+ body {
+     font-family: 'Quicksand', sans-serif;
+     font-size: 1.6rem;
+ }
+
+ // NAV
+
+ .burger-btn {
+     position: fixed;
+     top: 60px;
+     right: 8px;
+     padding: 1em;
+     background: none;
+     border: 1px solid transparent;
+     cursor: pointer;
+     z-index: 100; // umożliwia widoczność menu zawsze na wierzchu 
+
+     &:focus {
+         outline: none;
+         border: 1px solid rgba(255, 255, 255, .5);
+         border-radius: 8px;
+     }
+
+     &:hover {
+
+         .burger-btn__bars::after,
+         .burger-btn__bars::before {
+             width: 100%;
+         }
+     }
+
+     &__box {
+         position: relative;
+         width: 40px;
+         height: 30px;
+     }
+
+     &__bars,
+     &__bars::after,
+     &__bars::before {
+         @include burgerBtn;
+     }
+
+     &__bars {
+         width: 100%;
+
+         &::after {
+             top: 13px;
+             width: 60%;
+         }
+
+         &::before {
+             top: 27px;
+             width: 30%;
+             transition-delay: .1s;
+         }
+     }
+ }
+
+ .nav {
+     position: fixed;
+     top: 0;
+     display: flex;
+     justify-content: center;
+     align-items: center;
+     height: 100vh;
+     width: 100%;
+     transform: translateX(100%);
+     transition: .5s cubic-bezier(0.65, 0.05, 0.36, 1);
+     background-color: $main-color;
+     z-index: 50;
+
+     &--active {
+         transform: translateX(0);
+     }
+
+     &__item {
+         position: relative;
+         display: block;
+         margin: 0.5em 0;
+         padding: 0.5em 2em;
+         font-size: 2.8rem;
+         color: $light-white;
+         text-decoration: none;
+
+         &::before {
+             position: absolute;
+             top: 0;
+             left: 0;
+             width: 3px;
+             height: 100%;
+             transform: scaleY(0);
+             background-color: $light-white;
+             transition: transform .2s;
+             content: '';
+         }
+
+         &:hover::before {
+             transform: scaleY(1)
+         }
+     }
+ }
+
+ @keyframes navItemsAnimation {
+     from {
+         transform: translateX(200%);
+     }
+
+     to {
+         transform: translateX(0);
+     }
+ }
+
+ .nav-items-animation {
+     animation: navItemsAnimation 1s both;
+ }
+
+ .black-bars-color,
+ .black-bars-color::after,
+ .black-bars-color::before {
+     background-color: $hamburger-color;
+ }
+
+
+
+ // HEADER
+ .header {
+
+     position: relative;
+     display: flex;
+     justify-content: center;
+     align-items: center;
+     flex-direction: column;
+     padding: 2em;
+     height: 75vh;
+     text-align: center;
+     color: $pure-white;
+     @include heroImages('img/nowe/beach-2562563_640.jpg');
+     background-attachment: scroll;
+
+     &__heading {
+         font-family: 'Uchen', serif;
+         font-size: 4rem;
+         //  font-weight: 300;
+         text-shadow: 2px 2px 10px #000;
+         // margin-bottom: 1em;
+     }
+
+     &__text {
+         padding: 1em;
+         font-size: 2.2rem;
+         font-family: 'Quicksand', sans-serif;
+         //  text-shadow: 2px 2px 5px #000;
+     }
+
+     &__btn {
+         margin-top: 2em;
+         padding: 0.8em 1.6em;
+         background: $pure-white;
+         border: none;
+         border-radius: 8px;
+         color: $dark;
+         text-decoration: none;
+         text-transform: uppercase;
+         cursor: pointer;
+
+         &::before {
+             background-color: $light-white;
+         }
+     }
+
+     .login {
+         position: fixed;
+         display: flex;
+         align-items: center;
+         justify-content: center;
+         height: 50px;
+         width: 100%;
+         top: 0;
+         left: 0;
+         right: 0;
+         background-color: $bar-color;
+         z-index: 40;
+         transition: background .3s;
+
+         &:hover {
+             background-color: $main-color;
+         }
+
+
+
+         &__box {
+             position: fixed;
+             display: flex;
+             align-items: center;
+             width: 100%;
+             max-width: 1400px;
+
+
+             &-brand {
+                 margin-left: .5em;
+                 padding: 1em;
+                 //  text-align: left;
+                 text-decoration: none;
+                 text-transform: uppercase;
+                 font-weight: bold;
+                 color: $pure-white;
+             }
+
+             &-icon {
+                 margin-right: 0.5em;
+                 font-size: 3rem;
+                 padding: .5em;
+                 color: $pure-white;
+             }
+
+             &-loging {
+                 display: flex;
+                 flex-direction: column;
+                 align-items: flex-end;
+                 width: 100%;
+                 justify-content: flex-end;
+
+                 &-link {
+                     padding: 1em;
+                     font-size: 1.6rem;
+                     text-decoration: none;
+                     text-transform: uppercase;
+                     color: $pure-white;
+
+                     &:hover {
+                         color: $dark;
+                     }
+
+                 }
+             }
+
+         }
+
+     }
+
+ }
+
+ // ABOUTME
+ .aboutme {
+     &__box {
+         position: relative;
+         display: flex;
+         flex-wrap: wrap;
+         justify-content: space-around;
+
+         &-img {
+             width: 40%;
+             min-width: 100px;
+             z-index: 5;
+
+             &-item {
+                 width: 100%;
+
+             }
+         }
+
+         &-text {
+             display: flex;
+             flex-direction: column;
+             justify-content: center;
+             align-items: center;
+             width: 50%;
+
+             &-btn {
+                 display: flex;
+                 justify-content: center;
+                 align-items: center;
+                 height: 50px;
+                 width: 50%;
+                 min-width: 100px;
+                 max-width: 200px;
+                 padding: 0.5em 1em;
+                 background-color: $main-color;
+                 border-radius: 8px;
+                 cursor: pointer;
+                 margin-top: 1em;
+
+
+             }
+
+             &-link {
+                 text-decoration: none;
+                 text-transform: uppercase;
+                 color: $pure-white;
+                 letter-spacing: 0.2rem;
+                 padding: 1em;
+
+
+                 &:hover {
+                     color: $dark;
+                 }
+             }
+         }
+
+         &-figure {
+             display: none;
+         }
+
+
+
+     }
+ }
+
+ // EBOOK
+ .ebook {
+     &__box {
+         display: flex;
+         flex-direction: column;
+         align-items: center;
+
+         &-img {
+             display: flex;
+             flex-direction: column;
+
+             &-item {
+                 width: 100%;
+                 max-width: 400px;
+                 margin-bottom: 1em;
+             }
+
+             &-heading {
+                 margin-bottom: 2em;
+             }
+         }
+
+         &-text {
+             display: flex;
+             flex-direction: column;
+             align-items: center;
+
+
+             &-item {
+                 max-width: 400px;
+
+             }
+
+             &-btn {
+                 width: 50%;
+                 max-width: 200px;
+                 padding: 0.5em 1em;
+                 font-size: 1.8rem;
+                 letter-spacing: 0.2rem;
+                 text-transform: uppercase;
+                 background-color: $main-color;
+                 color: $pure-white;
+                 cursor: pointer;
+                 border-radius: 8px;
+
+                 //  &::before {
+                 //      background-color: $green-color-hover;
+                 //  }
+                 &:hover {
+                     color: $dark;
+                 }
+             }
+
+             &-title {
+                 display: none;
+                 text-transform: uppercase;
+                 font-weight: bold;
+                 font-size: 3rem;
+                 margin-bottom: 2em;
+             }
+         }
+
+         &-quote {
+             color: $main-color;
+             display: none;
+             left: 0;
+             top: -1em
+         }
+
+         &-figure {
+             &-link {
+
+                 display: none;
+             }
+         }
+
+     }
+
+     &__figure {
+         position: absolute;
+         display: none;
+         left: 0;
+         top: 2em;
+         width: 100%;
+         height: 30%;
+         background-color: $main-color;
+         z-index: -1;
+
+
+     }
+ }
+
+ // OFFERS 
+ .offers {
+     &__desc {
+         margin-bottom: 3em;
+     }
+
+     &__box {
+         display: flex;
+         flex-wrap: wrap;
+         justify-content: space-around;
+
+
+         &-card {
+             position: relative;
+             height: 70vh;
+             max-height: 300px;
+             width: 70%;
+             max-width: 300px;
+             text-align: center;
+             background-position: center;
+             background-size: cover;
+             box-shadow: 5px 5px 10px rgba(93, 147, 171, 0.7);
+             margin-bottom: 6em;
+             overflow: hidden;
+
+             &--one {
+                 background-image: url('../img/pisa-4995822_640.jpg');
+             }
+
+             &--two {
+                 background-image: url('../img/milano-2242609_640.jpg');
+             }
+
+             &-text {
+                 justify-content: center;
+                 position: absolute;
+                 top: 0;
+                 bottom: 0;
+                 left: 0;
+                 right: 0;
+                 background-color: rgba(0, 0, 0, .85);
+                 color: #ffffff;
+                 clip-path: circle(0% at 50% 90%);
+                 transition: clip-path .8s;
+
+             }
+
+             &-title {
+                 font-size: 1.8rem;
+                 letter-spacing: 0.2rem;
+                 margin-top: 1em;
+                 color: $pure-white;
+             }
+
+             &-desc {
+                 margin: 2em 1em;
+             }
+
+             &-subbmitBtn {
+                 position: absolute;
+                 margin: auto;
+                 padding: .5em 1em;
+                 bottom: 1.5em;
+                 left: 50%;
+                 transform: translateX(-50%);
+                 text-decoration: none;
+                 text-transform: uppercase;
+                 font-size: 1.6rem;
+                 letter-spacing: 0.1rem;
+                 background-color: $main-color;
+                 color: $pure-white;
+                 border-radius: 5px;
+                 z-index: 3000;
+
+
+                 &:hover {
+                     color: $dark;
+                 }
+             }
+
+         }
+
+         .offers__box-card:hover .offers__box-card-text {
+             clip-path: circle(120% at 50% 90%);
+         }
+
+     }
+
+
+ }
+
+ // CONTACT
+ .contact {
+     &__box {
+         position: relative;
+         display: flex;
+         flex-direction: column;
+         background-color: $main-color;
+         padding: 1em;
+
+
+         &-img {
+             display: none;
+             width: 50%;
+
+             &-item {
+                 width: 100%;
+             }
+         }
+
+         &-text {
+             display: flex;
+             flex-direction: column;
+
+             h2 {
+                 color: $pure-white;
+                 margin: .5em 0;
+
+             }
+         }
+
+         &-item {
+             margin-bottom: 0.5em;
+             font-size: 2.2rem;
+             text-decoration: none;
+             color: $pure-white;
+
+             i::after {
+                 content: ' :';
+             }
+
+
+             &-text {
+                 font-size: 1.6rem;
+                 margin-left: 1em;
+             }
+
+         }
+
+
+     }
+
+     &__form,
+     &__form-top {
+         display: flex;
+         flex-direction: column;
+         background-color: $main-color;
+         padding: .5em;
+
+     }
+
+     &__form-label {
+         margin-bottom: 0.5em;
+         text-transform: uppercase;
+         color: $pure-white
+     }
+
+     &__form-input {
+         @include contactForm;
+     }
+
+     &__form-textarea {
+         @include contactForm;
+         max-width: 100%;
+         width: 100%;
+         min-width: 100%;
+         min-height: 150px;
+     }
+
+     &__form-btn {
+         align-self: flex-end;
+         padding: 1em;
+         width: 100%;
+         max-width: 250px;
+         color: $dark;
+         border: none;
+         border-radius: 8px;
+         background-color: $pure-white;
+         cursor: pointer;
+         text-transform: uppercase;
+         letter-spacing: 0.2em;
+
+         &::before {
+             background-color: $light-white;
+         }
+     }
+
+ }
+
+
+
+
+ // FOOTER
+ .footer {
+     &__box {
+         display: flex;
+         justify-content: center;
+         align-items: center;
+         background-color: $main-color;
+         height: 8vh;
+         width: 100%;
+
+         &-text {
+             font-size: 2rem;
+             color: $light-white;
+         }
+     }
+
+ }
+
+
+
+
+
+ // ==========================
+ //         MEDIA   
+ // ==========================
+ @media(min-width: 576px) {
+     .header {
+         .login {
+             &__box {
+                 &-brand {
+                     margin-left: 1em;
+                 }
+             }
+         }
+     }
+
+
+
+     .aboutme {
+         &__box {
+             margin: 3em 0;
+
+             &-text {
+                 &-btn {
+                     margin-top: 2em;
+                 }
+
+                 &-link {
+                     font-size: 2rem;
+                 }
+             }
+         }
+     }
+
+     .ebook {
+         &__box {
+
+             &-quote {
+                 font-size: 5rem;
+             }
+         }
+     }
+
+     .offers {
+         &__desc {
+             margin: 3em;
+         }
+
+         &__box {
+             &-card {
+                 max-width: 250px;
+                 max-height: 350px;
+
+                 &-title {
+                     font-size: 2.2rem;
+                     //  margin: 1em 0 3em 0;
+                 }
+
+                 &-subbmitBtn {
+                     font-size: 1.8rem;
+                 }
+             }
+         }
+     }
+
+     .footer {
+         &__box {
+             height: 10vh;
+
+             &-text {
+                 font-size: 2.2rem;
+             }
+         }
+     }
+
+ }
+
+
+ @media(min-width: 768px) {
+
+
+     .header {
+         &__heading {
+             font-size: 6.6rem;
+         }
+
+         &__text {
+             font-size: 3.3rem;
+         }
+
+         &__btn {
+             font-size: 1.6rem;
+         }
+
+         .login {
+             &__box {
+                 &-brand {
+                     font-size: 1.8rem;
+                 }
+             }
+         }
+     }
+
+     .aboutme {
+         .desktop {
+             display: block;
+         }
+
+         .mobile {
+             display: none;
+         }
+
+         &__box {
+             margin-top: 3em;
+
+             &-text {
+                 justify-content: start;
+
+                 &-btn {
+                     display: none;
+                 }
+             }
+
+             &-figure {
+                 display: block;
+                 position: absolute;
+                 display: flex;
+                 justify-content: flex-end;
+                 align-items: center;
+                 width: 100%;
+                 height: 60px;
+                 bottom: 1.5em;
+                 background-color: $main-color;
+
+
+                 &-link {
+                     margin-right: 20%;
+                     text-decoration: none;
+                     font-size: 2rem;
+                     text-transform: uppercase;
+                     letter-spacing: 0.2rem;
+                     color: $pure-white;
+
+                     &:hover {
+                         color: $dark;
+                     }
+                 }
+             }
+         }
+     }
+
+     .ebook {
+         .desktop {
+             display: none;
+         }
+
+         &__box {
+
+             &-img {
+                 position: relative;
+                 flex-direction: row;
+                 justify-content: center;
+                 min-width: 700px;
+
+                 &-item {
+                     max-width: 300px;
+                     margin: auto;
+                 }
+             }
+
+             &-figure {
+                 display: none;
+             }
+
+         }
+
+         &__figure {
+             display: block;
+
+         }
+
+     }
+
+     .offers {
+         &__desc {
+             margin: 3em 7em;
+         }
+
+         &__box {
+             flex-wrap: nowrap;
+             justify-content: space-around;
+
+             &-card {
+                 max-width: 300px;
+                 //  min-height: 450px;
+                 margin-bottom: 2em;
+
+                 &-title {
+                     font-size: 2.5rem;
+                 }
+
+                 &-desc {
+                     font-size: 2rem;
+
+                 }
+             }
+
+         }
+     }
+
+     .contact {
+         &__box {
+             flex-direction: row;
+             flex-wrap: wrap;
+             align-items: center;
+
+             h2 {
+                 text-align: left;
+             }
+
+             &-img {
+                 display: block;
+
+                 &-item {
+                     padding: 1em;
+                 }
+             }
+
+             &-item {
+                 font-size: 2.2rem;
+                 margin-bottom: 1em;
+
+                 &-text {
+                     font-size: 2rem;
+                 }
+             }
+         }
+
+         &__form,
+         &__form-top {
+             min-width: 100%;
+         }
+     }
+ }
+
+ @media(min-width: 992px) {
+     .burger-btn {
+         top: 90px;
+         right: 25px;
+     }
+
+     .header {
+         background-image: $mint-gradient, url('../img/nowe/beach-2562563_1920.jpg');
+
+         &__heading {
+             font-size: 8rem;
+         }
+
+         .login {
+             height: 70px;
+
+             &__box {
+
+                 &-brand {
+                     font-size: 2.2rem;
+                 }
+
+                 &-icon {
+                     font-size: 3.3rem;
+                     margin-right: 1em;
+                 }
+             }
+         }
+     }
+
+     .nav {
+         &__item {
+             font-size: 4.8rem;
+         }
+     }
+
+     .aboutme {
+         &__box {
+             &-img {
+                 max-width: 350px;
+             }
+
+             &-text {
+                 padding: 0 2em;
+
+             }
+
+             &-figure {
+                 height: 100px;
+
+                 &-link {
+                     font-size: 3rem;
+                     margin-right: 25%;
+                 }
+             }
+         }
+
+
+
+     }
+
+     .ebook {
+         padding-top: 3em;
+
+         .mobile {
+             display: none;
+         }
+
+         .desktop {
+             display: block;
+         }
+
+         &__box {
+             position: relative;
+             flex-direction: row;
+
+             &-img {
+                 height: 600px;
+                 z-index: 10;
+
+                 &-item {
+                     position: relative;
+                 }
+
+                 &--up {
+                     position: absolute;
+                     left: 22em;
+                     top: 0;
+                 }
+
+                 &--down {
+                     position: absolute;
+                     left: 2em;
+                     bottom: 0;
+
+                 }
+
+                 &-title {
+                     display: block;
+                 }
+             }
+
+             &-text {
+                 margin-bottom: 8em;
+
+                 h2 {
+                     margin: 0;
+
+
+                 }
+
+                 &-item {
+                     margin: 1em 2em 2em 0;
+                 }
+
+                 &-title {
+                     display: block;
+                 }
+
+                 &-btn {
+                     display: none;
+                 }
+
+             }
+
+             &-quote {
+                 display: block;
+                 width: 100%;
+                 text-align: left;
+                 font-size: 6rem;
+
+             }
+
+             &-figure {
+                 display: block;
+                 position: absolute;
+                 display: flex;
+                 justify-content: flex-end;
+                 align-items: center;
+                 width: 98%;
+                 height: 90px;
+                 bottom: 2em;
+                 background-color: $main-color;
+
+                 &-link {
+                     display: block;
+                     margin-right: 10%;
+                     text-decoration: none;
+                     font-size: 3rem;
+                     text-transform: uppercase;
+                     letter-spacing: 0.2rem;
+                     color: $pure-white;
+
+                     &:hover {
+                         color: $dark;
+                     }
+                 }
+             }
+         }
+
+         &__figure {
+             width: 70%;
+             height: 25%;
+             left: 0;
+             top: 8em;
+         }
+     }
+
+
+     .offers {
+         margin-bottom: 4em;
+
+         &__box {
+             &-card {
+                 max-width: 400px;
+                 max-height: 500px;
+
+                 &-title {
+                     font-size: 2.8rem;
+                     margin: 1em 0;
+                 }
+
+                 &-desc {
+                     font-size: 2.2rem;
+                     margin-top: 5em;
+                 }
+             }
+         }
+     }
+
+     .contact {
+         &__box {
+             h2 {
+                 margin-left: .5em;
+             }
+
+             &-item {
+                 font-size: 3rem;
+                 margin-left: 1em;
+
+
+                 &-text {
+                     font-size: 2.5rem;
+
+                 }
+
+             }
+
+         }
+     }
+ }
+
+ @media(min-width: 1100px) {
+     .burger-btn {
+
+         &__box {
+             right: 0;
+             width: 70px;
+         }
+
+         &__bars {
+             height: 5px;
+
+             &::after {
+                 top: 17px;
+                 height: 5px;
+             }
+
+             &::before {
+                 top: 33px;
+                 height: 5px;
+             }
+         }
+     }
+
+     .ebook {
+         &__box {
+             &-text {
+                 &-title {
+                     font-size: 3.5rem;
+                 }
+             }
+
+             &-quote {
+                 font-size: 8rem;
+             }
+
+             &-figure {
+                 &-link {
+                     margin-right: 18%;
+                 }
+             }
+         }
+
+
+
+     }
+
+     .contact {
+         &__box {
+             &-item {
+                 font-size: 3.5rem;
+
+                 &-text {
+                     font-size: 2.5rem;
+                 }
+
+             }
+         }
+     }
+ }
