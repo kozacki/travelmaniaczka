@@ -39,7 +39,7 @@
             <div class="login__box">
                 <a class="login__box-brand" href="index.html">Travelmaniaczka.pl</a>
                 <div class="login__box-loging">
-                    <a href="login.html" class="login__box-loging-link">Logowanie</a>
+                    <a href="login.html" class="login__box-loging-link status">Logowanie</a>
                 </div>
                 <a href="login.html" class="login__box-icon"><i class="fas fa-user"></i></a>
             </div>
@@ -48,16 +48,18 @@
             <div class="login-form">
 
 
-                <form action="/login" method="post" class="login-form__form">
+                <form class="login-form__form">
                     <h2 class="section-heading">Logowanie</h2>
-                    <label for="email" name="email" class="login-form__form-label">E-mail</label>
-                    <input type="text" class="login-form__form-input">
+                    <label for="email" class="login-form__form-label">E-mail</label>
+                    <input type="text" name="email" class="login-form__form-input email">
 
                     <label for="password" class="login-form__form-label">Hasło</label>
-                    <input type="password" class="login-form__form-input">
+                    <input type="password" name="pwd" class="login-form__form-input pwd">
 
                     <a href="register.html" class="login-form__form-register">Zarejestruj się</a>
-                    <button class="login-form__form-submitBtn btn-special-animation">Zaloguj</button>
+                    <p class="errorParagraf"></p>
+                    <button type="button"
+                        class="login-form__form-submitBtn btn-special-animation zaloguj">Zaloguj</button>
                 </form>
             </div>
         </div>
@@ -77,6 +79,7 @@
 
 
     <script src="js/loging.js"></script>
+    <script src="js/login.js"></script>
 
 
 </body>

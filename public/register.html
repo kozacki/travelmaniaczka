@@ -7,11 +7,11 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Travelmaniaczka</title>
     <script src="https://kit.fontawesome.com/22088e2c9e.js" crossorigin="anonymous"></script>
- 
+
     <link rel="stylesheet" href="css/register.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    
+
     <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@400;700&display=swap" rel="stylesheet">
 </head>
 
@@ -46,26 +46,27 @@
         </div>
         <div class="loging">
             <div class="login-form">
-                <form action="" class="login-form__form">
+                <form class="login-form__form">
                     <h2 class="section-heading">Rejestracja</h2>
                     <label for="" class="login-form__form-label">Imię</label>
-                    <input type="text" class="login-form__form-input">
+                    <input type="text" name="firstName" class="login-form__form-input firstName">
 
-                    <label for="" class="login-form__form-label">E-mail</label>
-                    <input type="text" class="login-form__form-input">
-        
+                    <label for="" class="login-form__form-label ">E-mail</label>
+                    <input type="text" name="email" class="login-form__form-input email">
+
                     <label for="" class="login-form__form-label">Hasło</label>
-                    <input type="password" class="login-form__form-input">
+                    <input type="password" name="pwd" class="login-form__form-input pwd">
 
-                    <label for="" class="login-form__form-label">Powtórz hasło</label>
-                    <input type="password" class="login-form__form-input">
+                    <!-- <label for="" class="login-form__form-label">Powtórz hasło</label>
+                    <input type="password" class="login-form__form-input"> -->
 
                     <a href="login.html" class="login-form__form-register">Logowanie</a>
-                    <button class="login-form__form-submitBtn btn-special-animation">Zarejestruj</button>
-                </form>   
+                    <input class="login-form__form-submitBtn btn-special-animation register" value="Zarejestruj" />
+                    <!-- <button class="login-form__form-submitBtn btn-special-animation">Zarejestruj</button> -->
+                </form>
             </div>
         </div>
-        
+
 
 
         <footer class="footer">
@@ -82,8 +83,9 @@
 
     <!-- <script src="/js/main.js"></script> -->
     <script src="js/loging.js"></script>
-   
-    
+    <script src="js/register.js"></script>
+
+
 </body>
 
 </html>

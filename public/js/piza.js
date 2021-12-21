@@ -11,13 +11,14 @@ const gallery = [
 ];
 
 let counter = 0
+
 function nextImg() {
-    if(counter < gallery.length  ) {
-        
-        
+    if (counter < gallery.length) {
+
+
         galleryFrame.src = gallery[counter];
         counter++;
-       
+
     } else {
         counter = 0;
     }
@@ -25,7 +26,7 @@ function nextImg() {
 
 function prevImg() {
 
-    if ( counter > 0 ) {
+    if (counter > 0) {
         counter--;
         galleryFrame.src = gallery[counter];
     } else {
@@ -35,8 +36,13 @@ function prevImg() {
 
 
 
+
+
+
+
+
+
+
+
 arrowRight.addEventListener('click', nextImg);
 arrowLeft.addEventListener('click', prevImg);
-
-
-
